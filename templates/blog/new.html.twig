@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	: Ajouter un article
+{% endblock %}
+
+{% block body %}
+
+	<div class="container new my-3">
+		<div class="row">
+			<div class="col-md-8">
+				<h2>Titre de l'article</h2>
+				<div class="metadata">le JJ/MM/AAAA à HH:MM catégorie XXXX</div>
+				<img src="https://dummyimage.com/800x600/eee/aaa" class="img-fluid mb-3" alt="">
+				<div class="content">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus fugit harum in itaque
+						                        molestiae odio perspiciatis qui repellendus veniam voluptate. Ab amet asperiores aspernatur
+						                        atque consequatur corporis cum dolor, eveniet ex explicabo facilis fuga id laboriosam placeat
+						                        porro quia, quis, quisquam recusandae rerum saepe sint tempore velit veritatis? Amet aperiam
+						                        beatae dicta dignissimos distinctio dolores eius ex harum incidunt ipsum iure libero minima
+						                        molestias natus nihil odio optio perferendis possimus quaerat quas, quisquam quo reiciendis
+						                        sequi, similique sint velit voluptatum?</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque rem voluptatum! Aliquid
+						                        animi aspernatur aut, autem dolorum eaque ex facere, fugiat in ipsa magni modi molestias nihil
+						                        omnis, praesentium tempora voluptas? Aliquam fugiat nam quam quibusdam. A amet consequatur,
+						                        corporis dolor doloremque dolores et, ex impedit laboriosam magni obcaecati officia quidem, quo
+						                        sed temporibus! Aliquam aut, blanditiis deserunt dolore ducimus et eum ex impedit in inventore
+						                        ipsum iste magnam magni maiores maxime minima minus neque non omnis perferendis placeat quae
+						                        quaerat, qui quibusdam quos repudiandae rerum sint sunt unde voluptatem. Ad alias aperiam
+						                        assumenda beatae, consequuntur corporis cum dignissimos dolorem earum eveniet explicabo fuga
+						                        fugiat hic id ipsam itaque necessitatibus nesciunt nulla officia omnis quidem ratione reiciendis
+						                        reprehenderit vitae?</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque labore neque possimus quis unde?
+						                        Ab itaque nisi obcaecati pariatur! Ad aspernatur corporis, delectus distinctio dolorem esse est
+						                        et eveniet facilis id ipsum, iure laboriosam, nihil nulla obcaecati odio perferendis repellat
+						                        sunt totam voluptatibus. Adipisci consectetur delectus magni nostrum sint. A aperiam autem
+						                        delectus dolorum error explicabo ipsa iste iure molestiae nam nesciunt, nihil, perferendis
+						                        perspiciatis possimus reiciendis repellendus rerum sequi unde. Consectetur doloribus, ducimus ex
+						                        exercitationem fuga minima nihil nobis odio, quia recusandae similique ut vero! Architecto
+						                        blanditiis, consequatur, deserunt doloremque, eaque molestiae natus nihil pariatur porro
+						                        possimus quaerat quod.</p>
+				</div>
+			</div>
+			<div class="col-md-4 mt-3">
+				{{ form_start(form) }}
+				{{ form_row(form.title) }}
+				{{ form_row(form.category) }}
+				{{ form_row(form.image) }}
+				{{ form_row(form.content) }}
+				<div class="form-group text-right">
+					<button type="submit" class="btn btn-primary mx-1">Enregistrer</button>
+					<button type="button" class="btn btn-secondary mx-1">Annuler</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

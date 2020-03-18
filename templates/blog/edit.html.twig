@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} {{ parent() }} : Modifier {{ article.title }} {% endblock %}
+
+{% block body %}
+
+    <div class="container edit my-3">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>{{ article.title }}</h2>
+                <div class="metadata">
+                    le {{ article.createdAt | date('d/m/Y à H:i') }} catégorie {{ article.category.title }}
+                </div>
+                <img src="{{ article.image }}" class="img-fluid mb-3" alt="">
+                <div class="content">
+                    {{ article.content | raw }}
+                </div>
+            </div>
+            <div class="col-md-4 mt-3">
+                {{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.image) }}
+                {{ form_row(form.content) }}
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary mx-1">Enregistrer</button>
+                    <button type="button" class="btn btn-secondary mx-1">Annuler</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'security.html.twig' %}
+
+{% block body %}
+
+	<form action="{{ path('security_login') }}" class="form-registration" method="post">
+		<div class="input-group mb-2">
+			<div class="input-group-prepend">
+				<div class="input-group-text">
+					<i class="fas fa-envelope"></i>
+				</div>
+			</div>
+			<input type="text" name="_username" class="form-control" placeholder="Adresse Email" required autofocus>
+		</div>
+		<div class="input-group mb-2">
+			<div class="input-group-prepend">
+				<div class="input-group-text">
+					<i class="fas fa-key"></i>
+				</div>
+			</div>
+			<input type="password" name="_password" class="form-control" placeholder="Mot de passe" required>
+		</div>
+		<div class="input-group">
+			<button class="btn btn-lg btn-block btn-primary" type="submit">Connexion</button>
+			<a class="btn btn-lg btn-block btn-outline-danger" href="{{ path('security_registration') }}">Inscription</a>
+		</div>
+	</form>
+
+{% endblock %}

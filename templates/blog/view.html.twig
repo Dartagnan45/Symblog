@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	:
+	{{ article.title }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container view my-3">
+		<h2 class="my-0">{{ article.title }}</h2>
+		<div class="metadata">
+			le
+			{{ article.createdAt | date('d/m/Y à H:i') }}
+			catégorie
+			{{ article.category.title }}
+		</div>
+		<img src="{{ article.image }}" class="img-fluid mb-3" alt="">
+		<div class="content">
+			{{ article.content | raw }}
+		</div>
+	</div>
+	<div class="container comments my-3">
+		{% if article.comments | length != 0 %}
+			<h4>{{ article.comments | length }}
+				commentaires ...</h4>
+			{% for comment in article.comments %}
+				<div class="bg-light rounded m-3 p-3">
+					<div class="row">
+						<div class="col-avatar">
+							{% if comment.user.avatar %}
+								<img src="{{ comment.user.avatar.image }}" class="img-fluid rounded mt-1" alt="">
+							{% else %}
+								&nbsp;&nbsp;<i class="fas fa-user fa-5x" style="color: #cccccc"></i>
+							{% endif %}
+						</div>
+						<div class="col-md">
+							<h5>{{ comment.user.username }}
+								le
+								{{ comment.createdAt | date('d/m/Y à H:i') }}</h5>
+							{{ comment.content }}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+		{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+			<h4>Laisser un commentaire :</h4>
+			{{ form_start(form) }}
+			{{ form_row(form.content) }}
+			<div class="form-group text-right">
+				<button type="submit" class="btn btn-primary mx-1">Enregistrer</button>
+				<button type="button" class="btn btn-secondary mx-1">Annuler</button>
+			</div>
+			{{ form_end(form) }}
+		{% endif %}
+	</div>
+
+{% endblock %}

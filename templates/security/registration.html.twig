@@ -1,0 +1,48 @@
+{% extends 'security.html.twig' %}
+
+{% block body %}
+
+	{{ form_start(form) }}
+	<div class="input-group mb-2">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<i class="fas fa-user"></i>
+			</div>
+		</div>
+		{{ form_widget(form.username) }}
+		{{ form_errors(form.username) }}
+	</div>
+	<div class="input-group mb-2">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<i class="fas fa-envelope"></i>
+			</div>
+		</div>
+		{{ form_widget(form.email) }}
+		{{ form_errors(form.email) }}
+	</div>
+	<div class="input-group mb-2">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<i class="fas fa-key"></i>
+			</div>
+		</div>
+		{{ form_widget(form.password) }}
+		{{ form_errors(form.password) }}
+	</div>
+	<div class="input-group mb-2">
+		<div class="input-group-prepend">
+			<div class="input-group-text">
+				<i class="fas fa-key"></i>
+			</div>
+		</div>
+		{{ form_widget(form.confirmPassword) }}
+		{{ form_errors(form.confirmPassword) }}
+	</div>
+	<div class="input-group">
+		<button class="btn btn-lg btn-block btn-primary" type="submit">Inscription</button>
+		<a class="btn btn-lg btn-block btn-outline-success" href="{{ path('security_login') }}">Connexion</a>
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}

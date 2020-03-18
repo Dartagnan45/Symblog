@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	: Bienvenue
+{% endblock %}
+
+{% block body %}
+
+	<div class="container blog my-3">
+		{% for article in articles %}
+			{% if loop.index0 is divisible by (3) %}
+				<div class="row">
+				{% endif %}
+				<div class="col-md">
+					<h4 class="my-0">{{ article.title }}</h4>
+					<div class="metadata">
+						le
+						{{ article.createdAt | date('d/m/Y à H:i') }}
+						catégorie
+						{{ article.category.title }}
+					</div>
+					<img src="{{ article.image }}" class="img-fluid" alt="">
+					<div class="content">
+						{{ article.content | raw }}
+					</div>
+					<a href="{{ path('blog_view', { 'id': article.id }) }}" class="btn btn-success mb-1">Lire la suite</a>
+				</div>
+				{% if loop.index is divisible by (3) or loop.last %}
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+{% endblock %}
